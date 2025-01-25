@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve sht40 metrics
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/i2c_sensors_api
+Environment="PATH=/opt/i2c_sensors_api/sht40env/bin"
+ExecStart=/opt/i2c_sensors_api/sht40env/bin/uwsgi --ini sht40.ini
+
+[Install]
+WantedBy=multi-user.target
